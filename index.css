@@ -13,7 +13,7 @@ body {
     --memory-bg: rgba(243,198,165,0.12);
 
     --disk-color: #99d47e;
-    --disk-bg: rgba(183,215,168,0.12);
+    --disk-bg: rgba(170, 221, 147, 0.12);
 }
 
 header {
@@ -73,7 +73,9 @@ header h1 {
 
 .fa-microchip { color: var(--chip-color); }
 .icon-circle.chip { background-color: var(--chip-bg); }
+
 .fa-memory { color: var(--memory-color); }
 .icon-circle.memory { background-color: var(--memory-bg); }
+
 .fa-hdd { color: var(--disk-color); }
 .icon-circle.disk { background-color: var(--disk-bg); }
