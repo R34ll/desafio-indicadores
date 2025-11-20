@@ -13,6 +13,6 @@ function atualizarIndicadores() {
     document.getElementById('disco-uso').innerText = porcentagemAleatoria() + " / 512 GB";
 }
 
-setInterval(atualizarIndicadores, 2000);
+setInterval(atualizarIndicadores, 5000);
 atualizarIndicadores();
 
