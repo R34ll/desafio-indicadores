@@ -1,5 +1,9 @@
 
-
+const Indicadores = {
+    CPU: "cpu-uso",
+    MEMORIA: "memoria-uso",
+    DISCO: "disco-uso"
+}
 
 /*** 
  * Funções para gerar aleatóriamente o uso de CPU, Memória e Disco
@@ -10,9 +14,9 @@ function porcentagemAleatoria() {
 }
 
 function atualizarIndicadores() {
-    atualizarIndicador('cpu-uso', porcentagemAleatoria() + "%");
-    atualizarIndicador('memoria-uso', porcentagemAleatoria() + " / 16 GB");
-    atualizarIndicador('disco-uso', porcentagemAleatoria() + " / 512 GB");
+    atualizarIndicador(Indicadores.CPU, porcentagemAleatoria() + "%");
+    atualizarIndicador(Indicadores.MEMORIA, porcentagemAleatoria() + " / 16 GB");
+    atualizarIndicador(Indicadores.DISCO, porcentagemAleatoria() + " / 512 GB");
 }
 
 function atualizarIndicador(id, valor){
@@ -25,8 +29,8 @@ function atualizarCorIndicador(id, valor) {
     let elemento = document.getElementById(id);
     let porcentagem = parseInt(valor);
 
-    if (porcentagem < 50) {
-        elemento.style.color = "green";
+    if (porcentagem < 60) {
+        elemento.style.color = "green"; // TODO: Encontrar cores mais neutras
     } else if (porcentagem < 80) {
         elemento.style.color = "orange";
     } else {
