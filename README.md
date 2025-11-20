@@ -47,6 +47,6 @@ python3 -m http.server 8000
 
 Adicione capturas em `docs/` ou imagens no diretório `assets/` e referencie aqui. Exemplo:
 
-![screenshot-placeholder](src/assets/screenshot-01.png)
+![screenshot-placeholder](src/assets/screenshot-01.png.png)
 
 
