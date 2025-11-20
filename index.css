@@ -64,6 +64,13 @@ header h1 {
     margin-bottom: 5px;
 }
 
+/* Prevent long numeric values from wrapping and increasing card height */
+.card-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .card-label {
     font-size: 1.2rem;
     color: #6c757d;
