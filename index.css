@@ -79,3 +79,18 @@ header h1 {
 
 .fa-hdd { color: var(--disk-color); }
 .icon-circle.disk { background-color: var(--disk-bg); }
+
+.progress {
+    background-color: #e9ecef; 
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress .progress-bar {
+    transition: width 0.5s ease, background-color 0.3s ease;
+    border-radius: 999px;
+}
+
+.card-custom .progress {
+    height: 12px;
+}
