@@ -24,11 +24,16 @@ Estrutura relevante:
 ```
 desafio-indicadores/
 ├─ index.html
-├─ js/
-│  ├─ main.js       # entrypoint (module)
-│  ├─ ui.js         # manipulação do DOM e render
-│  ├─ utils.js      # funções utilitárias (gerar valor, selecionar cor)
-│  └─ config.js     # constantes/indicadores/cores
+├─ src/
+│  ├─ js/
+│  │  ├─ main.js       # entrypoint (module)
+│  │  ├─ ui.js         # manipulação do DOM e render
+│  │  ├─ utils.js      # funções utilitárias (gerar valor, selecionar cor)
+│  │  └─ config.js     # constantes/indicadores/cores
+│  └─ assets/
+│     ├─ css/
+│     │  └─ style.css  # estilos principais
+│     └─ screenshot-01.png
 ```
 
 ## Como executar localmente
