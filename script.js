@@ -30,11 +30,11 @@ function atualizarCorIndicador(id, valor) {
     let porcentagem = parseInt(valor);
 
     if (porcentagem < 60) {
-        elemento.style.color = "green"; // TODO: Encontrar cores mais neutras
+        elemento.style.color = "#5CB85C"; 
     } else if (porcentagem < 80) {
-        elemento.style.color = "orange";
+        elemento.style.color = "#FFC107";
     } else {
-        elemento.style.color = "red";
+        elemento.style.color = "#D9534F";
     }
 }
 
