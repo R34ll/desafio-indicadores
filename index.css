@@ -3,6 +3,19 @@ body {
     background: #f5f7f9;
 }
 
+:root {
+    --icon-bg-default: #eef3f8;
+
+    --chip-color: #7fb3c9;
+    --chip-bg: rgba(127,179,201,0.12);
+
+    --memory-color: #fcae75;
+    --memory-bg: rgba(243,198,165,0.12);
+
+    --disk-color: #99d47e;
+    --disk-bg: rgba(183,215,168,0.12);
+}
+
 header {
     background: #fff;
     border-bottom: 1px solid #e5e5e5;
@@ -18,13 +31,21 @@ header h1 {
 
 .card-custom {
     border: none;
-    border-radius: 15px;
+    border-radius: 8px;
+    min-height: 250px;
+}
+
+.card-custom .card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .icon-circle {
-    width: 50px;
-    height: 50px;
-    background-color: #e0f2f7;
+    width: 60px;
+    height: 60px;
+    background-color: var(--icon-bg-default);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -37,19 +58,22 @@ header h1 {
 }
 
 .card-value {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 700;
     color: #343a40;
     margin-bottom: 5px;
 }
 
 .card-label {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #6c757d;
     margin-bottom: 0;
 }
 
 
-.fa-microchip { color: #5bc0de; }
-.fa-memory { color: #f0ad4e; }
-.fa-hdd { color: #5cb85c; }
+.fa-microchip { color: var(--chip-color); }
+.icon-circle.chip { background-color: var(--chip-bg); }
+.fa-memory { color: var(--memory-color); }
+.icon-circle.memory { background-color: var(--memory-bg); }
+.fa-hdd { color: var(--disk-color); }
+.icon-circle.disk { background-color: var(--disk-bg); }
