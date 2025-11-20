@@ -1,4 +1,3 @@
-
 const Indicadores = {
     CPU: "cpu-uso",
     MEMORIA: "memoria-uso",
@@ -39,6 +38,35 @@ function atualizarCorIndicador(id, valor) {
 }
 
 
-setInterval(atualizarIndicadores, 5000);
-atualizarIndicadores();
+function EventoBotaoAtualizar() {
+    const botaoAtualizar = document.getElementById("btn-atualizar");
+    botaoAtualizar.addEventListener("click", () => {
+        atualizarIndicadores();
+        atualizarUltimaAtualizacao();
+    });
+}
+
+function atualizarUltimaAtualizacao() {
+    const agora = new Date();
+    const horas = String(agora.getHours()).padStart(2, '0');
+    const minutos = String(agora.getMinutes()).padStart(2, '0');
+    const dataAtualizacao = `${agora.getDate()}/${agora.getMonth() + 1}/${agora.getFullYear()} ${horas}:${minutos}`;
+    const ultimaAtualizacaoElemento = document.getElementById("ultima-atualizacao");
+    ultimaAtualizacaoElemento.innerText = `Última atualização: ${dataAtualizacao}`;
+}
+
+window.onload = function() {
+    EventoBotaoAtualizar();    
+}
+
+function main(){
+    atualizarIndicadores();
+    atualizarUltimaAtualizacao();
+
+}
+
+
+setInterval(() => {main()}, 5000);
+main();
+
 
