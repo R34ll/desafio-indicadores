@@ -1,17 +1,13 @@
 # Desafio Indicadores
+Projeto front-end que exibe indicadores do sistema (CPU, Memória e Disco) em cards com barras de progresso. Os valores são gerados de forma simulada e atualizados automaticamente para demonstrar o comportamento em tempo real.
 
-Projeto front-end que exibe indicadores do sistema (CPU, Memória, Disco) em cards com barras de progresso. Valores são gerados aleatoriamente para demonstração.
+- Este repositório contém uma página estática que apresenta os indicadores com:
+- um valor exibido (por exemplo `42%` ou `8 / 16 GB`);
+- uma barra de progresso sincronizada com o valor;
+- mudança de cor conforme o nível (verde / amarelo / vermelho), seguindo regras de uso.
 
----
+A implementação foi organizada em módulos ES para manter o código limpo e fácil de estender, com lógica separada para valores, interface e configuração. O layout utiliza Bootstrap para garantir responsividade(Desktop/Mobile), clareza visual e acessibilidade, além de permitir rápida adaptação para novos indicadores ou funcionalidades.
 
-## Descrição
-
-Este repositório contém uma página estática que mostra indicadores do sistema em tempo real (simulados). Cada indicador tem:
-- um valor exibido (por exemplo `42%` ou `8 / 16 GB`)
-- uma barra de progresso que segue o valor
-- mudança de cor conforme o nível (verde/amarelo/vermelho)
-
-O objetivo é um desafio simples para demonstrar organização de código em módulos ES, atualizações periódicas e um layout responsivo com Bootstrap.
 
 ## Tecnologias utilizadas
 
@@ -47,11 +43,19 @@ Passos rápidos (porta 8000):
 python3 -m http.server 8000
 # Depois abra: http://localhost:8000
 ```
+## Versão online
+
+Além da execução local, você pode visualizar a página funcionando em:
+**[GitHub Pages](https://r34ll.github.io/desafio-indicadores/)**
+
+
 
 ## Screenshots
 
-Adicione capturas em `docs/` ou imagens no diretório `assets/` e referencie aqui. Exemplo:
-
 ![screenshot-placeholder](src/assets/screenshot-01.png)
 
-
+## Extras Implementados 
+- Feedback visual acessível (cores neutras, contraste e animações suaves).
+- Código modular (separação clara entre lógica, UI e config).
+- Estrutura pensada para expansão (novos indicadores podem ser adicionados rapidamente).
+- Padrão de commits seguindo lógica progressiva e organizada.
