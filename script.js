@@ -1,72 +1,80 @@
 const Indicadores = {
-    CPU: "cpu-uso",
-    MEMORIA: "memoria-uso",
-    DISCO: "disco-uso"
-}
+    CPU: { id: "cpu-uso", tipo: "percentual", maximo: 100 },
+    MEMORIA: { id: "memoria-uso", tipo: "absoluto", maximo: 16 },
+    DISCO: { id: "disco-uso", tipo: "absoluto", maximo: 512 }
+};
 
-/*** 
- * Funções para gerar aleatóriamente o uso de CPU, Memória e Disco
- * 
-***/
-function porcentagemAleatoria() {
+const Cores = {
+    VERDE:  "#5CB85C", // < 60
+    AMARELO:"#FFC107", // 60 - 79
+    VERMELHO:"#D9534F" // >= 80
+};
+
+function gerarPorcentagem() {
     return Math.floor(Math.random() * 100);
 }
 
-function atualizarIndicadores() {
-    atualizarIndicador(Indicadores.CPU, porcentagemAleatoria() + "%");
-    atualizarIndicador(Indicadores.MEMORIA, porcentagemAleatoria() + " / 16 GB");
-    atualizarIndicador(Indicadores.DISCO, porcentagemAleatoria() + " / 512 GB");
+function selecionarCor(percentual) {
+    if (percentual < 60) return Cores.VERDE;
+    if (percentual < 80) return Cores.AMARELO;
+    return Cores.VERMELHO;
 }
 
-function atualizarIndicador(id, valor){
-    document.getElementById(id).innerText = valor;
-    atualizarCorIndicador(id, valor);
+function atualizarElementoTexto(id, texto) {
+    const elemento = document.getElementById(id);
+    if (elemento) elemento.innerText = texto;
 }
 
+function atualizarIndicador(indicador) {
+    const percentual = gerarPorcentagem();
+    const elemento = document.getElementById(indicador.id);
 
-function atualizarCorIndicador(id, valor) {
-    let elemento = document.getElementById(id);
-    let porcentagem = parseInt(valor);
+    if (!elemento) return;
 
-    if (porcentagem < 60) {
-        elemento.style.color = "#5CB85C"; 
-    } else if (porcentagem < 80) {
-        elemento.style.color = "#FFC107";
+    if (indicador.tipo === "percentual") {
+        elemento.innerText = `${percentual}%`;
     } else {
-        elemento.style.color = "#D9534F";
+        elemento.innerText = `${percentual} / ${indicador.maximo} GB`;
     }
+
+    elemento.style.color = selecionarCor(percentual);
 }
 
-
-function EventoBotaoAtualizar() {
-    const botaoAtualizar = document.getElementById("btn-atualizar");
-    botaoAtualizar.addEventListener("click", () => {
-        atualizarIndicadores();
-        atualizarUltimaAtualizacao();
-    });
+function atualizarTodosIndicadores() {
+    Object.values(Indicadores).forEach(indicador => atualizarIndicador(indicador));
 }
 
 function atualizarUltimaAtualizacao() {
     const agora = new Date();
-    const horas = String(agora.getHours()).padStart(2, '0');
-    const minutos = String(agora.getMinutes()).padStart(2, '0');
-    const dataAtualizacao = `${agora.getDate()}/${agora.getMonth() + 1}/${agora.getFullYear()} ${horas}:${minutos}`;
-    const ultimaAtualizacaoElemento = document.getElementById("ultima-atualizacao");
-    ultimaAtualizacaoElemento.innerText = `Última atualização: ${dataAtualizacao}`;
+    
+    const dataFormatada = agora.toLocaleString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+    atualizarElementoTexto("ultima-atualizacao", `Última atualização: ${dataFormatada}`);
 }
 
-window.onload = function() {
-    EventoBotaoAtualizar();    
+function configurarBotaoAtualizar() {
+    const botao = document.getElementById("btn-atualizar");
+    if (!botao) return;
+
+    botao.addEventListener("click", () => {
+        atualizarTodosIndicadores();
+        atualizarUltimaAtualizacao();
+    });
 }
 
-function main(){
-    atualizarIndicadores();
+function main() {
+    atualizarTodosIndicadores();
     atualizarUltimaAtualizacao();
-
 }
 
-
-setInterval(() => {main()}, 5000);
-main();
-
-
+window.onload = () => {
+    configurarBotaoAtualizar();
+    main();
+    setInterval(main, 5000);
+};
